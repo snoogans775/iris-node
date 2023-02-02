@@ -1,11 +1,11 @@
-const { parseFilters } = require('./../src/utils/parseFilters')
+const { parseFilters } = require('../src/utils/parseFilters')
 const assert = require('assert')
 
-assertErrorOnDuplicates()
-assertOkOnString()
+errorOnDuplicates()
+okOnReturnString()
 
 
-function assertOkOnString() {
+function okOnReturnString() {
     const valid = [
         {
             "field": "altitude",
@@ -20,10 +20,10 @@ function assertOkOnString() {
     ]
 
     assert.ok(typeof parseFilters(valid) === 'string')
-    console.log('passed')
+    console.log('Passed okOnReturnString')
 }
 
-function assertErrorOnDuplicates() {
+function errorOnDuplicates() {
     const duplicates = [
         {
             "field": "altitude",
@@ -38,5 +38,5 @@ function assertErrorOnDuplicates() {
     ]
 
     assert.throws(() => parseFilters(duplicates), Error)
-    console.log('passed')
+    console.log('Passed errorOnDuplicate')
 }
