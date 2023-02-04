@@ -1,0 +1,12 @@
+[
+    {
+        "field": "duration",
+        "operator": "<",
+        "value": "8000"
+    },
+    {
+        "field": "duration",
+        "operator": ">",
+        "value": "7000" 
+    }
+]

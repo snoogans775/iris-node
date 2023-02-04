@@ -1,4 +1,4 @@
-const { parseFilters } = require('../src/utils/parseFilters')
+const { parseFiltersToSQL } = require('../src/utils/parseFiltersToSQL')
 const assert = require('assert')
 
 errorOnDuplicates()
@@ -19,7 +19,7 @@ function okOnReturnString() {
         }
     ]
 
-    assert.ok(typeof parseFilters(valid) === 'string')
+    assert.ok(typeof parseFiltersToSQL(valid) === 'string')
     console.log('Passed okOnReturnString')
 }
 
@@ -37,6 +37,6 @@ function errorOnDuplicates() {
         }
     ]
 
-    assert.throws(() => parseFilters(duplicates), Error)
+    assert.throws(() => parseFiltersToSQL(duplicates), Error)
     console.log('Passed errorOnDuplicate')
 }

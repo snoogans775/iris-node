@@ -1,0 +1,188 @@
+[
+    {
+        "unique_identifier": 2,
+        "max_timestamp": 1664383081935,
+        "min_timestamp": 1664383074742,
+        "duration": 7193
+    },
+    {
+        "unique_identifier": 4,
+        "max_timestamp": 1664384333392,
+        "min_timestamp": 1664384289297,
+        "duration": 44095
+    },
+    {
+        "unique_identifier": 9,
+        "max_timestamp": 1664383261548,
+        "min_timestamp": 1664383253708,
+        "duration": 7840
+    },
+    {
+        "unique_identifier": 11,
+        "max_timestamp": 1664382194687,
+        "min_timestamp": 1664382171306,
+        "duration": 23381
+    },
+    {
+        "unique_identifier": 14,
+        "max_timestamp": 1664383535409,
+        "min_timestamp": 1664383517656,
+        "duration": 17753
+    },
+    {
+        "unique_identifier": 20,
+        "max_timestamp": 1664383713290,
+        "min_timestamp": 1664383672643,
+        "duration": 40647
+    },
+    {
+        "unique_identifier": 22,
+        "max_timestamp": 1664381867793,
+        "min_timestamp": 1664381838400,
+        "duration": 29393
+    },
+    {
+        "unique_identifier": 23,
+        "max_timestamp": 1664382393654,
+        "min_timestamp": 1664382367716,
+        "duration": 25938
+    },
+    {
+        "unique_identifier": 24,
+        "max_timestamp": 1664386025284,
+        "min_timestamp": 1664385981535,
+        "duration": 43749
+    },
+    {
+        "unique_identifier": 35,
+        "max_timestamp": 1664383995380,
+        "min_timestamp": 1664383970461,
+        "duration": 24919
+    },
+    {
+        "unique_identifier": 40,
+        "max_timestamp": 1664382653161,
+        "min_timestamp": 1664382641982,
+        "duration": 11179
+    },
+    {
+        "unique_identifier": 41,
+        "max_timestamp": 1664386521828,
+        "min_timestamp": 1664386507028,
+        "duration": 14800
+    },
+    {
+        "unique_identifier": 44,
+        "max_timestamp": 1664384136904,
+        "min_timestamp": 1664384096969,
+        "duration": 39935
+    },
+    {
+        "unique_identifier": 50,
+        "max_timestamp": 1664382806032,
+        "min_timestamp": 1664382774425,
+        "duration": 31607
+    },
+    {
+        "unique_identifier": 51,
+        "max_timestamp": 1664390258734,
+        "min_timestamp": 1664390199158,
+        "duration": 59576
+    },
+    {
+        "unique_identifier": 60,
+        "max_timestamp": 1664384389483,
+        "min_timestamp": 1664384366645,
+        "duration": 22838
+    },
+    {
+        "unique_identifier": 61,
+        "max_timestamp": 1664385833058,
+        "min_timestamp": 1664385760559,
+        "duration": 72499
+    },
+    {
+        "unique_identifier": 74,
+        "max_timestamp": 1664390635938,
+        "min_timestamp": 1664390623276,
+        "duration": 12662
+    },
+    {
+        "unique_identifier": 76,
+        "max_timestamp": 1664384762512,
+        "min_timestamp": 1664384735623,
+        "duration": 26889
+    },
+    {
+        "unique_identifier": 87,
+        "max_timestamp": 1664390781559,
+        "min_timestamp": 1664390717333,
+        "duration": 64226
+    },
+    {
+        "unique_identifier": 100,
+        "max_timestamp": 1664390278550,
+        "min_timestamp": 1664390262195,
+        "duration": 16355
+    },
+    {
+        "unique_identifier": 114,
+        "max_timestamp": 1664384596450,
+        "min_timestamp": 1664384526376,
+        "duration": 70074
+    },
+    {
+        "unique_identifier": 148,
+        "max_timestamp": 1664390604831,
+        "min_timestamp": 1664390574707,
+        "duration": 30124
+    },
+    {
+        "unique_identifier": 184,
+        "max_timestamp": 1664384825843,
+        "min_timestamp": 1664384793914,
+        "duration": 31929
+    },
+    {
+        "unique_identifier": 208,
+        "max_timestamp": 1664389133825,
+        "min_timestamp": 1664389126154,
+        "duration": 7671
+    },
+    {
+        "unique_identifier": 270,
+        "max_timestamp": 1664384998784,
+        "min_timestamp": 1664384978324,
+        "duration": 20460
+    },
+    {
+        "unique_identifier": 372,
+        "max_timestamp": 1664385263397,
+        "min_timestamp": 1664385249309,
+        "duration": 14088
+    },
+    {
+        "unique_identifier": 400,
+        "max_timestamp": 1664385588603,
+        "min_timestamp": 1664385569639,
+        "duration": 18964
+    },
+    {
+        "unique_identifier": 429,
+        "max_timestamp": 1664388512041,
+        "min_timestamp": 1664388468090,
+        "duration": 43951
+    },
+    {
+        "unique_identifier": 522,
+        "max_timestamp": 1664388942713,
+        "min_timestamp": 1664388910462,
+        "duration": 32251
+    },
+    {
+        "unique_identifier": 697,
+        "max_timestamp": 1664389647863,
+        "min_timestamp": 1664389631412,
+        "duration": 16451
+    }
+]

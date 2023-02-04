@@ -1,9 +1,8 @@
 // return a raw SQL query
-function parseFilters(filtersArray) {
+function parseFiltersToSQL(filtersArray) {
     // The filters object has three properties
-    // field
-    // operator
-    // value
+    // field, operator, value
+
     const duplicateFilters = filtersArray.reduce((acc, curr, comparatorIndex, arr) => {
         const match = arr.filter((f, targetIndex) => {
             const valuesMatch = (f.field === curr.field) && (f.operator === curr.operator)
@@ -33,4 +32,4 @@ function parseFilters(filtersArray) {
 
 }
 
-module.exports = { parseFilters }
+module.exports = { parseFiltersToSQL }

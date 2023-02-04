@@ -39,6 +39,27 @@ module.exports = function ({
 
     async function fetch(req, res, next) {
         try {
+            const page = req.query.page
+            const pageSize = 1000
+            const records = await db('telemetry')
+                .select('*')
+                .limit(pageSize)
+                .offset(parseInt(page) * pageSize)
+            return res.status(200).json({
+                status: 'success',
+                data: records
+            })
+        } catch(err) {
+            console.error(err)
+            return res.status(500).json({
+                status: 'failure',
+                message: err
+            })
+        }
+    }
+
+    async function fetchByFilters(req, res, next) {
+        try {
             const filters = req.body.filters
             const filtersAsWhereClause = parseFilters(filters)
             console.log(filtersAsWhereClause)
@@ -50,12 +71,16 @@ module.exports = function ({
             })
         } catch(err) {
             console.error(err)
-            res.status(500).json({status: 'failure', error: err})
+            res.status(500).json({
+                status: 'failure', 
+                message: err
+            })
         }
     }
 
     return {
         loadData,
-        fetch
+        fetch,
+        fetchByFilters,
     }
 }
