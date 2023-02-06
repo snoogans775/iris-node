@@ -1,0 +1,12 @@
+[
+    {
+        "field": "altitude",
+        "operator": "<",
+        "value": "100"
+    },
+    {
+        "field": "altitude",
+        "operator": ">",
+        "value": "0"
+    }
+]

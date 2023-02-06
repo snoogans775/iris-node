@@ -1,0 +1,12 @@
+[
+    {
+        "unique_identifier": 2,
+        "max_timestamp": -100000,
+        "min_timestamp": 1664383074742
+    },
+    {
+        "unique_identifier": 4,
+        "max_timestamp": -100000,
+        "min_timestamp": 1664384289297
+    }
+]
