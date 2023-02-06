@@ -45,8 +45,8 @@ module.exports = function ({
             const pageSize = 1000
             const records = await db('intruder')
                 .select('*')
-                .limit(pageSize)
-                .offset(parseInt(page) * pageSize)
+                // .limit(pageSize)
+                // .offset(parseInt(page) * pageSize)
             return res.status(200).json({
                 status: 'success',
                 data: records

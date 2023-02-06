@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Site</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    body { padding-top: 50px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Query Intrusions</h2>
+    <form id="ui">
+      <label for="">Timestamp Range</label>
+      <br>
+      <input type="number" name="min-timestamp" />
+      <input type="number" name="max-timestamp" />
+      <button type="submit">Send Query</button>
+    </form>
+  </div>
+  <div id="output" class="container">
+
+  </div>
+    
+  <script>
+    const form = document.querySelector('#ui')
+    console.log(form)
+    // form.addEventListener('submit', (e) => {
+    //   console.log(e)
+    //   e.preventDefault()
+    // })
+  </script>
+</body>
+</html>

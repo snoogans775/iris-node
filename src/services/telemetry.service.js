@@ -62,7 +62,6 @@ module.exports = function ({
         try {
             const filters = req.body.filters
             const filtersAsWhereClause = parseFiltersToSQL(filters)
-            console.log(filtersAsWhereClause)
             const result = await db.raw(`SELECT * FROM telemetry ${filtersAsWhereClause}`)
             return res.status(200).json({
                 status: 'success',
