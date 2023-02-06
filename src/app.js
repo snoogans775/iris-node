@@ -2,14 +2,12 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const controller = require('./controllers/controller')
-const adminController = require('./controllers/admin.controller')
 require('dotenv').config()
 
 const app = express();
 
 // set security HTTP headers
 app.use(helmet());
-
 
 // parse json request body
 app.use(express.json());
@@ -20,10 +18,9 @@ app.options('*', cors());
 
 // use custom auth for demo
 app.use('/', (req, res, next) => {
-  console.log('authing')
-  console.log(req.headers)
-  console.log(process.env.TOKEN)
-  console.log(req.originalUrl.split('/'))
+  console.log('authorization')
+  console.log('incoming headers', req.headers)
+  console.log('request url: ' + req.originalUrl)
 
   if(req.headers.authorization === `Bearer ${process.env.TOKEN}`) {
     next()

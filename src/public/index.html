@@ -3,34 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <title>Sample Site</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <style>
-    body { padding-top: 50px; }
+    body { 
+      display: flex; 
+      flex-wrap: wrap; 
+      font-size: 12px; 
+    }
+    form { display: grid; max-width: 400px; margin-right: 2rem; }
+    label { padding-top: 1rem; }
+    input { max-width: 40%; }
+    button { max-width: 400px; }
+    td { padding: 0.125rem;}
+    #output-table {
+      overflow: scroll;
+      border: 2px dotted #AAA;
+      max-width: 400px;
+      margin: 1rem 0;
+    }
+    #output {
+      color: #bbb;
+      background: #444;
+      min-width: 400px;
+      max-width: 400px;
+      padding-top: 2rem;
+    }
   </style>
+  <script async="false" defer src="./index.js"></script>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Query Intrusions</h2>
+  <div>
     <form id="ui">
-      <label for="">Timestamp Range</label>
-      <br>
-      <input type="number" name="min-timestamp" />
-      <input type="number" name="max-timestamp" />
+      <h2>Query Intrusions</h2>
       <button type="submit">Send Query</button>
+      <br>
+      <label for="">Timestamp</label>
+      <br>
+      <span>
+        <input type="number" name="min-timestamp" value="1664389339677" />
+        <span> - </span>
+        <input type="number" name="max-timestamp" value="" />
+      </span>
+      <br>
+      <label for="">Altitude</label>
+      <span>
+        <input type="number" step="any" name="min-altitude" value="" />
+        <span> - </span>
+        <input type="number" step="any" name="max-altitude" value="" />
+      </span>
+      <br>
+      <label for="">Longitude</label>
+      <span>
+        <input type="number" step="any" name="min-longitude" value="" />
+        <span> - </span>
+        <input type="number" step="any" name="max-longitude" value="" />
+      </span>
+      <br>
+      <label for="">Latitude</label>
+      <span>
+        <input type="number" step="any" name="min-latitude" value="" />
+        <span> - </span>
+        <input type="number" step="any" name="max-latitude" value="" />
+      </span>
+      <label for="">Horizontal Velocity</label>
+      <span>
+        <input type="number" step="any" name="min-horizontal_velocity" value="" />
+        <span> - </span>
+        <input type="number" step="any" name="max-horizontal_velocity" value="" />
+      </span>
+      <label for="">Vertical Velocity</label>
+      <span>
+        <input type="number" step="any" name="min-vertical_velocity" value="" />
+        <span> - </span>
+        <input type="number" step="any" name="max-vertical_velocity" value="" />
+      </span>
+      <label for="">Range</label>
+      <span>
+        <input type="number" step="any" name="min-range" value="" />
+        <span> - </span>
+        <input type="number" step="any" name="max-range" value="" />
+      </span>
     </form>
   </div>
-  <div id="output" class="container">
+  <table id="output-table">
+    <thead>
+      <td>timestamp</td>
+      <td>unique_identifier</td>
+      <td>latitude</td>
+      <td>longitude</td>
+      <td>altitude</td>
+      <td>heading</td>
+      <td>horizontal_velocity</td>
+      <td>vertical_velocity</td>
+      <td>range</td>
+    </thead>
+    <tbody id="output"></tbody>
 
-  </div>
+  </table>
     
-  <script>
-    const form = document.querySelector('#ui')
-    console.log(form)
-    // form.addEventListener('submit', (e) => {
-    //   console.log(e)
-    //   e.preventDefault()
-    // })
-  </script>
+
 </body>
 </html>
