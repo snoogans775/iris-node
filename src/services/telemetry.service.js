@@ -9,15 +9,10 @@ module.exports = function ({
 
     async function loadData(req, res, next) {
         try {
-            let telemetryCSV = null
-            if (req.body.telemetry !== undefined) {
-                telemetryCSV = req.body.telemetry
-            } else {
-                telemetryCSV = await fs.readFileSync(
-                    path.join(appDir, 'data', 'telemetry_bec.csv'),
-                    'utf8'
-                )
-            }
+            const telemetryCSV = await fs.readFileSync(
+                path.join(appDir, 'data', 'telemetry_bec.csv'),
+                'utf8'
+            )
             const json = await csvToJSON(telemetryCSV)
 
             // For this demo, we will truncate data before operating

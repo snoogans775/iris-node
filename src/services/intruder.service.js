@@ -11,15 +11,10 @@ module.exports = function ({
 
     async function loadData(req, res, next) {
         try {
-            let intruderCSV = null
-            if (req.body.intrusions !== undefined) {
-                intruderCSV = req.body.intrusions
-            } else {
-                intruderCSV = await fs.readFileSync(
+            const intruderCSV = await fs.readFileSync(
                     path.join(appDir, 'data', 'intruder_bec.csv'),
                     'utf8'
                 )
-            }
             const json = await csvToJSON(intruderCSV)
 
             // For this demo, we will truncate data before operating
