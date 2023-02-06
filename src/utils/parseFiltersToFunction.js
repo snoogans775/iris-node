@@ -17,8 +17,6 @@ function parseFiltersToFunction(filtersArray) {
         throw new Error(`Can not process duplicate filters: Error: ${JSON.stringify(duplicateFilters)}`)
     }
 
-    console.log('filters', filtersArray)
-    
     return function(record) {
         const filterResults = filtersArray.map(filter => {
             const {field, operator, value} = filter
