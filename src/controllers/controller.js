@@ -24,6 +24,7 @@ const router = Router()
 // DIRECT GETS
 router.get('/', (req, res, next) => res.status(200).send(''))
 router.get('/intruder/:id', IntruderService.fetchById)
+router.get('/intruder/:id/telemetry', IntruderService.fetchTelemetryByIntruderId)
 router.get('/intruder', IntruderService.fetch)
 router.get('/telemetry', IntruderService.fetch)
 

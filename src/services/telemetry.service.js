@@ -3,16 +3,21 @@ module.exports = function ({
     path,
     db,
     csvToJSON,
-    parseFilters
+    parseFiltersToSQL
 }) {
     const appDir = path.dirname(require.main.filename);
 
     async function loadData(req, res, next) {
         try {
-            const telemetryCSV = await fs.readFileSync(
-                path.join(appDir, 'data', 'telemetry_bec.csv'),
-                'utf8'
-            )
+            let telemetryCSV = null
+            if (req.body.telemetry !== undefined) {
+                telemetryCSV = req.body.telemetry
+            } else {
+                telemetryCSV = await fs.readFileSync(
+                    path.join(appDir, 'data', 'telemetry_bec.csv'),
+                    'utf8'
+                )
+            }
             const json = await csvToJSON(telemetryCSV)
 
             // For this demo, we will truncate data before operating
@@ -39,7 +44,7 @@ module.exports = function ({
 
     async function fetch(req, res, next) {
         try {
-            const page = req.query.page
+            const page = req.query.page ?? 0
             const pageSize = 1000
             const records = await db('telemetry')
                 .select('*')
@@ -49,7 +54,7 @@ module.exports = function ({
                 status: 'success',
                 data: records
             })
-        } catch(err) {
+        } catch (err) {
             console.error(err)
             return res.status(500).json({
                 status: 'failure',
@@ -61,7 +66,7 @@ module.exports = function ({
     async function fetchByFilters(req, res, next) {
         try {
             const filters = req.body.filters
-            const filtersAsWhereClause = parseFilters(filters)
+            const filtersAsWhereClause = parseFiltersToSQL(filters)
             console.log(filtersAsWhereClause)
             const result = await db.raw(`SELECT * FROM telemetry ${filtersAsWhereClause}`)
             return res.status(200).json({
@@ -69,10 +74,10 @@ module.exports = function ({
                 count: result.length,
                 data: result
             })
-        } catch(err) {
+        } catch (err) {
             console.error(err)
             res.status(500).json({
-                status: 'failure', 
+                status: 'failure',
                 message: err
             })
         }

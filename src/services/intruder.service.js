@@ -11,10 +11,15 @@ module.exports = function ({
 
     async function loadData(req, res, next) {
         try {
-            const intruderCSV = await fs.readFileSync(
-                path.join(appDir, 'data', 'intruder_bec.csv'),
-                'utf8'
-            )
+            let intruderCSV = null
+            if (req.body.intrusions !== undefined) {
+                intruderCSV = req.body.intrusions
+            } else {
+                intruderCSV = await fs.readFileSync(
+                    path.join(appDir, 'data', 'intruder_bec.csv'),
+                    'utf8'
+                )
+            }
             const json = await csvToJSON(intruderCSV)
 
             // For this demo, we will truncate data before operating
@@ -41,7 +46,7 @@ module.exports = function ({
 
     async function fetch(req, res, next) {
         try {
-            const page = req.query.page
+            const page = req.query.page ?? 0
             const pageSize = 1000
             const records = await db('intruder')
                 .select('*')
@@ -51,7 +56,7 @@ module.exports = function ({
                 status: 'success',
                 data: records
             })
-        } catch(err) {
+        } catch (err) {
             console.error(err)
             return res.status(500).json({
                 status: 'failure',
@@ -69,7 +74,7 @@ module.exports = function ({
                 status: 'success',
                 data: attempt ?? null
             })
-        } catch(err) {
+        } catch (err) {
             console.error(err)
             return res.status(500).json({
                 status: 'success',
@@ -83,6 +88,8 @@ module.exports = function ({
             const filters = req.body.filters
 
             const filtersAsWhereClause = parseFiltersToSQL(filters)
+
+            console.log(filtersAsWhereClause)
 
             const result = await db.raw(`SELECT * FROM intruder ${filtersAsWhereClause}`)
 
@@ -121,6 +128,7 @@ module.exports = function ({
 
             return res.status(200).json({
                 status: 'success',
+                count: recordsFilteredByDuration?.length,
                 data: recordsFilteredByDuration
             })
 
@@ -133,11 +141,51 @@ module.exports = function ({
         }
     }
 
+    async function fetchTelemetryByIntruderId(req, res, next) {
+        try {
+
+            const id = req.params.id
+            if (id === undefined) {
+                return res.status(400).json({
+                    status: 'failure',
+                    message: `Invalid id received, expected integer, received ${typeof id}`
+                })
+            }
+            const intruderRecords = await db('intruder')
+                .select('unique_identifier')
+                .max('timestamp as max_timestamp')
+                .min('timestamp as min_timestamp')
+                .groupBy('unique_identifier')
+                .where('unique_identifier', '=', id)
+                .then(records => calculateDuration(records))
+
+            console.log(intruderRecords)
+            const telemetryRecords = await Promise.all(
+                intruderRecords.map(async timeData => {
+                    return await db('telemetry')
+                        .where('timestamp', '>=', timeData.min_timestamp)
+                        .andWhere('timestamp', '<=', timeData.max_timestamp)
+                })
+            )
+            return res.status(200).json({
+                status: 'success',
+                data: telemetryRecords
+            })
+        } catch (err) {
+            console.error(err)
+            return res.status(500).json({
+                status: 'failure',
+                message: err
+            })
+        }
+    }
+
     return {
         loadData,
         fetch,
         fetchById,
         fetchByFilters,
-        fetchByDuration
+        fetchByDuration,
+        fetchTelemetryByIntruderId
     }
 }
