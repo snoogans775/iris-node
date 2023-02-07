@@ -16,8 +16,22 @@ const db = knex({
 })
 
 // SET UP SERVICES
-const TelemetryService = require('../services/telemetry.service')({ fs, path, db, csvToJSON, parseFiltersToSQL })
-const IntruderService = require('../services/intruder.service')({ fs, path, db, csvToJSON, parseFiltersToSQL, parseFiltersToFunction, calculateDuration })
+const TelemetryService = require('../services/telemetry.service')({ 
+    fs, 
+    path, 
+    db, 
+    csvToJSON, 
+    parseFiltersToSQL 
+})
+const IntruderService = require('../services/intruder.service')({ 
+    fs, 
+    path, 
+    db, 
+    csvToJSON, 
+    parseFiltersToSQL, 
+    parseFiltersToFunction, 
+    calculateDuration 
+})
 
 const router = Router()
 
