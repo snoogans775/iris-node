@@ -7,7 +7,11 @@ require('dotenv').config()
 const app = express();
 
 // set security HTTP headers
-app.use(helmet());
+// currently relieved to prevent any browser problems for demo
+app.use(function(req, res, next) {
+  res.setHeader("Content-Security-Policy", "script-src 'unsafe-inline'");
+  return next();
+});
 
 // parse json request body
 app.use(express.json());

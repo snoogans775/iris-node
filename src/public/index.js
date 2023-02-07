@@ -18,7 +18,7 @@ form.addEventListener('submit', async (e) => {
     }, '')
 
     async function fetchIntrusions(filters) {
-        return await fetch('http://localhost/intruder/query', {
+        return await fetch('/intruder/query', {
             method: 'POST',
             headers: {
                 Authorization: 'Bearer kfredericks-iris',
