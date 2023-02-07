@@ -32,6 +32,7 @@ app.use('/', (req, res, next) => {
   }
   res.status(401).send('Unauthorized')
 })
+
 // v1 api routes
 app.use('/', controller);
 app.use('/admin', express.static('src/public'))
